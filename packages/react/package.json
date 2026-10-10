@@ -4,11 +4,22 @@
   "description": "React wrappers for @antonio-ds/components",
   "type": "module",
   "license": "MIT",
-  "files": ["dist"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonio-borlado/antonio-ds.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/antonio-borlado/antonio-ds#readme",
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
   },
   "sideEffects": true,
   "scripts": {
@@ -26,5 +37,7 @@
     "@types/react": "^19.0.0",
     "react": "^19.0.0"
   },
-  "publishConfig": { "access": "public" }
+  "publishConfig": {
+    "access": "public"
+  }
 }

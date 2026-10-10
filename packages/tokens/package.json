@@ -4,11 +4,22 @@
   "description": "Design tokens and multi-brand themes (CSS variables, JS, JSON)",
   "type": "module",
   "license": "MIT",
-  "files": ["dist"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonio-borlado/antonio-ds.git",
+    "directory": "packages/tokens"
+  },
+  "homepage": "https://github.com/antonio-borlado/antonio-ds#readme",
+  "files": [
+    "dist"
+  ],
   "main": "./dist/js/tokens.js",
   "types": "./dist/js/tokens.d.ts",
   "exports": {
-    ".": { "types": "./dist/js/tokens.d.ts", "default": "./dist/js/tokens.js" },
+    ".": {
+      "types": "./dist/js/tokens.d.ts",
+      "default": "./dist/js/tokens.js"
+    },
     "./css/*": "./dist/css/*",
     "./json/*": "./dist/json/*",
     "./ds-theme.js": "./dist/ds-theme.js"
@@ -21,5 +32,7 @@
     "@tokens-studio/sd-transforms": "^2.0.3",
     "style-dictionary": "^5.0.0"
   },
-  "publishConfig": { "access": "public" }
+  "publishConfig": {
+    "access": "public"
+  }
 }
