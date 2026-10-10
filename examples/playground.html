@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es" data-brand="base">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Playground DS (local)</title>
+  <!--
+    Playground local: igual que artifact.html pero con los builds locales. Ejecuta `npm run build` antes.
+    @0 = última versión 0.x: los cambios minor/patch del DS llegan solos, sin redeploy.
+    Cuando publiques la 1.0, cambia @0 por @1.
+  -->
+  <script src="/packages/tokens/dist/ds-theme.js"></script>
+  <script type="module" src="/packages/components/dist/cdn/ds-components.js"></script>
+  <style>
+    main { max-width: var(--ds-layout-max-width); margin: 0 auto; padding: var(--ds-layout-section) var(--ds-layout-gutter); display: grid; gap: var(--ds-space-lg); }
+    h1 { font-size: var(--ds-typography-size-h1); line-height: var(--ds-font-line-height-tight); margin: 0; }
+    .row { display: flex; gap: var(--ds-space-xs); flex-wrap: wrap; align-items: center; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="row">
+      <h1>Hola, sistema de diseño</h1>
+      <ds-badge variant="accent">v0</ds-badge>
+    </div>
+    <ds-card elevated>
+      <h3 slot="header">Suscríbete</h3>
+      <ds-input label="Email" placeholder="tu@email.com" hint="Una vez al mes, sin spam."></ds-input>
+      <div slot="footer">
+        <ds-button>Suscribirme</ds-button>
+        <ds-button variant="ghost" id="toggle">Cambiar tema</ds-button>
+      </div>
+    </ds-card>
+  </main>
+  <script>
+    document.getElementById('toggle').addEventListener('click', function () {
+      var t = DS.getTheme();
+      DS.setTheme({ mode: t.mode === 'dark' ? 'light' : 'dark' });
+    });
+  </script>
+</body>
+</html>

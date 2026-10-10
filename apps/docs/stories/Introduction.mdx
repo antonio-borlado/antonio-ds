@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introducción" />
+
+# Antonio DS
+
+Sistema de diseño multimarca para web (móvil y desktop) y apps. Usa la barra superior para cambiar **marca**, **tema** y **viewport**.
+
+## Cómo funciona
+
+1. **Figma (Tokens Studio)** es la fuente: los tokens viven en `tokens/tokens.json` del repo.
+2. El build genera **variables CSS** (`--ds-*`), JS y JSON por marca y tema.
+3. Los **componentes** (`<ds-button>`, `<ds-input>`, `<ds-card>`, `<ds-badge>`) solo consumen variables semánticas, así que cualquier marca nueva funciona sin tocarlos.
+
+## Usar en un producto
+
+### Artefacto o HTML (se actualiza solo vía CDN)
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@antonio-ds/tokens@0/dist/ds-theme.js" data-brand="base"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@antonio-ds/components@0/dist/cdn/ds-components.js"></script>
+
+<ds-button variant="primary">Guardar</ds-button>
+<script>DS.setTheme({ mode: 'dark' })</script>
+```
+
+### React
+
+```bash
+npm i @antonio-ds/tokens @antonio-ds/react
+```
+
+```tsx
+import '@antonio-ds/tokens/css/all.css';
+import { Button, Theme } from '@antonio-ds/react';
+
+<Theme brand="base" mode="dark"><Button variant="secondary">Cancelar</Button></Theme>
+```
+
+## Marcas y temas
+
+Aplica `data-brand="<marca>"` y `data-theme="light|dark"` en `<html>` o en cualquier contenedor. Sin `data-theme` se respeta la preferencia del sistema.

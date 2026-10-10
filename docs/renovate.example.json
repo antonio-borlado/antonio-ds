@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "description": "Actualiza el sistema de diseño en cuanto se publica y fusiona solo minor/patch",
+      "matchPackagePatterns": ["^@antonio-ds/"],
+      "groupName": "design system",
+      "minimumReleaseAge": "0 days",
+      "schedule": ["at any time"],
+      "automerge": true,
+      "matchUpdateTypes": ["minor", "patch"]
+    }
+  ]
+}

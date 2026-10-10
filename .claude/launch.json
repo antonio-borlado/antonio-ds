@@ -1,0 +1,7 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "storybook", "runtimeExecutable": "npm", "runtimeArgs": ["run", "storybook"], "port": 6006 },
+    { "name": "examples", "runtimeExecutable": "npx", "runtimeArgs": ["vite", "--port", "5174", "--strictPort"], "port": 5174 }
+  ]
+}

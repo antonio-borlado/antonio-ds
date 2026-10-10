@@ -1,0 +1,21 @@
+// Purges jsDelivr's cache for the floating major-version URLs (e.g. @antonio-ds/tokens@0/...) after a release,
+// so products that load the DS from the CDN pick up the new version within minutes.
+import { readFileSync } from 'node:fs';
+
+const FILES = {
+  'packages/tokens': ['dist/ds-theme.js', 'dist/css/all.css', 'dist/css/core.css', 'dist/css/global.css'],
+  'packages/components': ['dist/cdn/ds-components.js'],
+};
+
+let failed = false;
+for (const [dir, files] of Object.entries(FILES)) {
+  const pkg = JSON.parse(readFileSync(`${dir}/package.json`, 'utf8'));
+  const major = pkg.version.split('.')[0];
+  for (const file of files) {
+    const url = `https://purge.jsdelivr.net/npm/${pkg.name}@${major}/${file}`;
+    const res = await fetch(url);
+    console.log(`${res.ok ? '✓' : '✗'} ${url} (${res.status})`);
+    if (!res.ok) failed = true;
+  }
+}
+if (failed) process.exitCode = 1;

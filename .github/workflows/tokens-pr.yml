@@ -1,0 +1,36 @@
+name: Tokens PR
+# When Tokens Studio pushes a change to tokens/tokens.json in a PR, add a patch changeset if the PR has none,
+# so merging it releases a new version automatically. Edit the generated file to "minor"/"major" if needed.
+on:
+  pull_request:
+    paths: ['tokens/tokens.json']
+
+permissions:
+  contents: write
+
+jobs:
+  changeset:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Add changeset if missing
+        run: |
+          if git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -q '^\.changeset/.*\.md$'; then
+            echo "PR already has a changeset"; exit 0
+          fi
+          cat > .changeset/tokens-${{ github.event.pull_request.number }}.md <<'MD'
+          ---
+          "@antonio-ds/tokens": patch
+          ---
+
+          Actualización de tokens desde Figma (Tokens Studio).
+          MD
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .changeset
+          git commit -m "chore: add changeset for token update"
+          git push
