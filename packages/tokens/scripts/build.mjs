@@ -1,5 +1,6 @@
 // Builds CSS variables, JS and JSON from the Tokens Studio single-file export (tokens/tokens.json).
-// Layers: core/primitives → brands/<brand>/{brand,light,dark} → components. Responsive sets become media queries.
+// Layers: core/primitives → brands/<brand>/{brand,light,dark}. Responsive sets become media queries.
+// Components consume semantic and brand tokens directly (no component-token layer).
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
@@ -30,7 +31,6 @@ const modesOf = (brand) => setNames.filter((s) => s.startsWith(`brands/${brand}/
 if (!brands.includes(DEFAULT_BRAND)) throw new Error(`Default brand "${DEFAULT_BRAND}" not found in tokens.json`);
 
 const CORE = 'core/primitives';
-const COMPONENTS = 'components/components';
 const MOBILE = 'responsive/mobile';
 const DESKTOP = 'responsive/desktop';
 
@@ -98,7 +98,7 @@ async function buildBrand(brand) {
   const modes = modesOf(brand);
   const brandSet = `brands/${brand}/brand`;
   const defaultMode = modes.includes('light') ? 'light' : modes[0];
-  const ctx = (mode) => [CORE, brandSet, `brands/${brand}/${mode}`, MOBILE, COMPONENTS];
+  const ctx = (mode) => [CORE, brandSet, `brands/${brand}/${mode}`, MOBILE];
   const rootSel = brand === DEFAULT_BRAND ? `:root,\n[data-brand="${brand}"]` : `[data-brand="${brand}"]`;
 
   let css = `/* Brand: ${brand} */\n`;
@@ -122,20 +122,21 @@ async function build() {
   rmSync(DIST, { recursive: true, force: true });
   for (const dir of ['css/themes', 'css/brands', 'json', 'js']) mkdirSync(join(DIST, dir), { recursive: true });
 
-  const baseCtx = [CORE, `brands/${DEFAULT_BRAND}/brand`, `brands/${DEFAULT_BRAND}/${modesOf(DEFAULT_BRAND)[0]}`, MOBILE, COMPONENTS];
+  const baseCtx = [CORE, `brands/${DEFAULT_BRAND}/brand`, `brands/${DEFAULT_BRAND}/${modesOf(DEFAULT_BRAND)[0]}`, MOBILE];
   let core = '/* @antonio-ds/tokens — generated, do not edit. Source: tokens/tokens.json */\n';
   core += await cssBlock(baseCtx, [CORE], ':root');
-  // Component tokens alias semantic ones; redeclare them on every themed scope so var() re-resolves there
-  // (custom properties inherit computed values, so declaring only on :root would freeze nested themes).
-  core += await cssBlock(baseCtx, [COMPONENTS], ':root,\n[data-brand],\n[data-theme]');
-  // Renamed tokens keep their old CSS name as an alias until the next major version.
+  // Renamed (1.2) and removed component tokens (1.3) keep their old CSS names as aliases until 2.0.
+  // Declared on every themed scope so var() re-resolves inside nested brands/themes.
   const renamed = JSON.parse(readFileSync(join(ROOT, 'scripts/renamed-tokens.json'), 'utf8'));
+  const removedComponents = JSON.parse(readFileSync(join(ROOT, 'scripts/removed-component-tokens.json'), 'utf8'));
   const cssName = (path) => `--${[PREFIX, ...path.split('.')].join('-')}`;
-  core += `/* Deprecated names (renamed in 1.2, removed in 2.0) */\n:root,\n[data-brand],\n[data-theme] {\n${Object.entries(renamed)
-    .map(([from, to]) => `  ${cssName(from)}: var(${cssName(to)});`)
-    .join('\n')}\n}\n`;
+  const aliases = [
+    ...Object.entries(renamed).map(([from, to]) => `  ${cssName(from)}: var(${cssName(to)});`),
+    ...Object.entries(removedComponents).map(([name, value]) => `  ${name}: ${value};`),
+  ];
+  core += `/* Deprecated names, removed in 2.0 */\n:root,\n[data-brand],\n[data-theme] {\n${aliases.join('\n')}\n}\n`;
   core += await cssBlock(baseCtx, [MOBILE], ':root');
-  core += media(`(min-width: ${DESKTOP_MIN_WIDTH})`, await cssBlock([...baseCtx.slice(0, 3), DESKTOP, COMPONENTS], [DESKTOP], ':root'));
+  core += media(`(min-width: ${DESKTOP_MIN_WIDTH})`, await cssBlock([...baseCtx.slice(0, 3), DESKTOP], [DESKTOP], ':root'));
   writeFileSync(join(DIST, 'css/core.css'), core);
 
   const global = `/* Opt-in page defaults */
@@ -200,7 +201,7 @@ ${[
       themes.push({ id, brand, mode });
       writeFileSync(join(DIST, `css/themes/${id}.css`), perMode[mode]);
       for (const bp of ['mobile', 'desktop']) {
-        const flat = await flatResolved([CORE, `brands/${brand}/brand`, `brands/${brand}/${mode}`, `responsive/${bp}`, COMPONENTS]);
+        const flat = await flatResolved([CORE, `brands/${brand}/brand`, `brands/${brand}/${mode}`, `responsive/${bp}`]);
         resolved[`${id}-${bp}`] = flat;
         writeFileSync(join(DIST, `json/${id}-${bp}.json`), JSON.stringify(flat, null, 2) + '\n');
       }

@@ -26,6 +26,6 @@ Los tokens se editan en Figma con el plugin **Tokens Studio** y se sincronizan c
 
 ## Reglas de nombrado
 
-- Componentes solo consumen `color.*` semánticos, `radius.control|container`, `font.family.body|heading`, `typography.size.*` y tokens de componente.
+- Los componentes consumen directamente los semánticos (`color.bg.*`, `color.content.*`, `color.border.*`), los tokens de marca (`radius.control|container`, `font.family.body|heading`) y las escalas (`space.*`, `size.*`, `typography.size.*`). No hay capa de tokens de componente.
 - Nunca referencies `color.blue.600` desde un componente: crea o usa un semántico.
 - Nombres en kebab-case, sin espacios: se convierten en `--ds-<ruta-con-guiones>`.

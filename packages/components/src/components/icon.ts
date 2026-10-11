@@ -26,7 +26,7 @@ const warnOnce = (msg: string) => {
 export class DsIcon extends LitElement {
   static styles = css`
     :host {
-      --_size: var(--ds-icon-size-md);
+      --_size: var(--ds-size-20);
       display: inline-flex;
       flex: none;
       width: var(--_size);
@@ -35,10 +35,10 @@ export class DsIcon extends LitElement {
       vertical-align: middle;
     }
     :host([size='sm']) {
-      --_size: var(--ds-icon-size-sm);
+      --_size: var(--ds-size-16);
     }
     :host([size='lg']) {
-      --_size: var(--ds-icon-size-lg);
+      --_size: var(--ds-size-24);
     }
     :host([size='inherit']) {
       --_size: 1.25em;

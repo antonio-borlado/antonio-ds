@@ -23,42 +23,42 @@ export class DsInput extends LitElement {
         gap: var(--ds-space-2xs);
       }
       label {
-        color: var(--ds-input-label);
+        color: var(--ds-color-content-primary);
         font-size: var(--ds-typography-size-small);
         font-weight: var(--ds-font-weight-medium);
       }
       input {
-        height: var(--ds-input-height);
-        padding-inline: var(--ds-input-padding-x);
-        border-radius: var(--ds-input-radius);
-        border: var(--ds-border-width-thin) solid var(--ds-input-border);
-        background: var(--ds-input-bg);
-        color: var(--ds-input-fg);
+        height: var(--ds-size-40);
+        padding-inline: var(--ds-space-sm);
+        border-radius: var(--ds-radius-control);
+        border: var(--ds-border-width-thin) solid var(--ds-color-border-strong);
+        background: var(--ds-color-bg-surface);
+        color: var(--ds-color-content-primary);
         font: inherit;
         font-size: var(--ds-typography-size-body);
         outline: none;
         transition: border-color var(--ds-duration-fast) ease-out, box-shadow var(--ds-duration-fast) ease-out;
       }
       input::placeholder {
-        color: var(--ds-input-placeholder);
+        color: var(--ds-color-content-secondary);
       }
       input:focus-visible {
-        border-color: var(--ds-input-border-focus);
-        box-shadow: 0 0 0 1px var(--ds-input-border-focus);
+        border-color: var(--ds-color-focus-ring);
+        box-shadow: 0 0 0 1px var(--ds-color-focus-ring);
       }
       input:disabled {
         opacity: 0.5;
         cursor: not-allowed;
       }
       input[aria-invalid='true'] {
-        border-color: var(--ds-input-error);
+        border-color: var(--ds-color-content-danger);
       }
       .hint {
-        color: var(--ds-input-hint);
+        color: var(--ds-color-content-secondary);
         font-size: var(--ds-typography-size-caption);
       }
       .error {
-        color: var(--ds-input-error);
+        color: var(--ds-color-content-danger);
         font-size: var(--ds-typography-size-caption);
       }
     `,
