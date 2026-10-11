@@ -6,8 +6,7 @@
   <title>Playground DS (local)</title>
   <!--
     Playground local: igual que artifact.html pero con los builds locales. Ejecuta `npm run build` antes.
-    @0 = última versión 0.x: los cambios minor/patch del DS llegan solos, sin redeploy.
-    Cuando publiques la 1.0, cambia @0 por @1.
+    En artifact.html las URLs usan @1: los cambios minor/patch del DS llegan solos, sin redeploy.
   -->
   <script src="/packages/tokens/dist/ds-theme.js"></script>
   <script type="module" src="/packages/components/dist/cdn/ds-components.js"></script>
@@ -21,7 +20,7 @@
   <main>
     <div class="row">
       <h1>Hola, sistema de diseño</h1>
-      <ds-badge variant="accent">v0</ds-badge>
+      <ds-badge variant="accent">v1</ds-badge>
     </div>
     <ds-card elevated>
       <h3 slot="header">Suscríbete</h3>

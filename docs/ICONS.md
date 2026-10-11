@@ -33,7 +33,7 @@ Lucide viene incluida. Las otras se cargan una vez:
 
 ```html
 <!-- CDN / artefactos -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/@antonio-ds/components@0/dist/cdn/icons-material.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@antonio-ds/components@1/dist/cdn/icons-material.js"></script>
 <html data-icon-set="material">
 ```
 
