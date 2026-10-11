@@ -1,6 +1,6 @@
 {
   "name": "@antonio-ds/components",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Framework-agnostic Web Components (Lit) themed by @antonio-ds/tokens",
   "type": "module",
   "license": "MIT",
@@ -34,7 +34,7 @@
     "lit": "^3.3.0"
   },
   "peerDependencies": {
-    "@antonio-ds/tokens": "^0.1.0"
+    "@antonio-ds/tokens": "^1.0.0"
   },
   "devDependencies": {
     "@material-symbols/svg-400": "^0.48.0",

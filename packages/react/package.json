@@ -1,6 +1,6 @@
 {
   "name": "@antonio-ds/react",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "React wrappers for @antonio-ds/components",
   "type": "module",
   "license": "MIT",
@@ -26,11 +26,11 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@antonio-ds/components": "^0.1.0",
+    "@antonio-ds/components": "^1.0.0",
     "@lit/react": "^1.0.8"
   },
   "peerDependencies": {
-    "@antonio-ds/tokens": "^0.1.0",
+    "@antonio-ds/tokens": "^1.0.0",
     "react": ">=18"
   },
   "devDependencies": {
