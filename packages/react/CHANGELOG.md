@@ -1,5 +1,19 @@
 # @antonio-ds/react
 
+## 1.4.0
+
+### Minor Changes
+
+- 4a288f9: Listas y switch, equivalentes a _Lists and Tables_ y _Toggle_ de Figma.
+
+  - Nuevos `<ds-list type="default|grouped">`, `<ds-list-row>` (leading/trailing, label, description, detail, disclosure, href/interactive, separador con sangría), `<ds-list-header type="default|plain|prominent|section">`, `<ds-list-footer>` y `<ds-switch>` (form-associated). Wrappers React `List`, `ListRow`, `ListHeader`, `ListFooter`, `Switch`.
+  - Nuevo token `color.bg.success.default` (relleno sólido de éxito: switch activo, acciones de añadir), con contraste AA validado.
+
+### Patch Changes
+
+- Updated dependencies [4a288f9]
+  - @antonio-ds/components@1.4.0
+
 ## 1.3.0
 
 ### Patch Changes
