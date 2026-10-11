@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
-import { DsBadge, DsButton, DsCard, DsIcon, DsInput, DsList, DsListFooter, DsListHeader, DsListRow, DsSwitch } from '@antonio-ds/components';
+import { DsBadge, DsButton, DsCard, DsIcon, DsInput, DsDatePicker, DsList, DsListFooter, DsListHeader, DsListRow, DsSelect, DsStepper, DsSwitch } from '@antonio-ds/components';
 
-export type { BadgeVariant, ButtonSize, ButtonVariant, IconName, IconSet, IconSize, ListHeaderType, ListType } from '@antonio-ds/components';
+export type { BadgeVariant, ButtonSize, ButtonVariant, IconName, IconSet, IconSize, ListHeaderType, ListType, DatePickerType } from '@antonio-ds/components';
 export { iconNames, iconSets, registerIconSet } from '@antonio-ds/components';
 
 export const Button = createComponent({ tagName: 'ds-button', elementClass: DsButton, react: React });
@@ -24,7 +24,12 @@ export const Badge = createComponent({ tagName: 'ds-badge', elementClass: DsBadg
 export const Icon = createComponent({ tagName: 'ds-icon', elementClass: DsIcon, react: React });
 
 export const List = createComponent({ tagName: 'ds-list', elementClass: DsList, react: React });
-export const ListRow = createComponent({ tagName: 'ds-list-row', elementClass: DsListRow, react: React });
+export const ListRow = createComponent({
+  tagName: 'ds-list-row',
+  elementClass: DsListRow,
+  react: React,
+  events: { onChange: 'change' as EventName<Event>, onEdit: 'ds-edit' as EventName<CustomEvent<{ action: 'add' | 'remove' }>> },
+});
 export const ListHeader = createComponent({ tagName: 'ds-list-header', elementClass: DsListHeader, react: React });
 export const ListFooter = createComponent({ tagName: 'ds-list-footer', elementClass: DsListFooter, react: React });
 
@@ -55,3 +60,24 @@ export function Theme({
 } & React.HTMLAttributes<HTMLElement>) {
   return React.createElement(Tag, { 'data-brand': brand, 'data-theme': mode, 'data-icon-set': iconSet, ...rest }, children);
 }
+
+export const Stepper = createComponent({
+  tagName: 'ds-stepper',
+  elementClass: DsStepper,
+  react: React,
+  events: { onChange: 'change' as EventName<Event> },
+});
+
+export const Select = createComponent({
+  tagName: 'ds-select',
+  elementClass: DsSelect,
+  react: React,
+  events: { onChange: 'change' as EventName<Event> },
+});
+
+export const DatePicker = createComponent({
+  tagName: 'ds-date-picker',
+  elementClass: DsDatePicker,
+  react: React,
+  events: { onChange: 'change' as EventName<Event> },
+});

@@ -49,6 +49,26 @@ export const Trailing: StoryObj<Args> = {
       <ds-list-row label="Toggle"><ds-switch slot="trailing" label="Toggle" checked></ds-switch></ds-list-row>
       <ds-list-row label="Action"><span slot="trailing" style="color:var(--ds-color-content-accent)">Label</span></ds-list-row>
       <ds-list-row label="Badge"><ds-badge slot="trailing" variant="success">Activo</ds-badge></ds-list-row>
+      <ds-list-row label="Stepper"><ds-stepper slot="trailing" label="Cantidad" value="1" min="0" max="10"></ds-stepper></ds-list-row>
+      <ds-list-row label="Pop-up"><ds-select slot="trailing" label="Frecuencia"><option value="d">Diario</option><option value="w" selected>Semanal</option><option value="m">Mensual</option></ds-select></ds-list-row>
+      <ds-list-row label="Picker"><ds-date-picker slot="trailing" label="Recordatorio" value="2024-05-22T16:20"></ds-date-picker></ds-list-row>
+    </ds-list>
+  </div>`,
+};
+
+export const Edit: StoryObj<Args> = {
+  name: 'Edición',
+  parameters: { controls: { disable: true } },
+  render: () => html`<div style="max-width:430px">
+    <ds-list type="grouped">
+      <ds-list-header>Seleccionar</ds-list-header>
+      <ds-list-row edit="select" label="Unselected" description="Toca el círculo"></ds-list-row>
+      <ds-list-row edit="select" selected label="Selected"></ds-list-row>
+    </ds-list>
+    <ds-list type="grouped">
+      <ds-list-header>Añadir y quitar</ds-list-header>
+      <ds-list-row edit="add" label="Add"></ds-list-row>
+      <ds-list-row edit="remove" label="Remove"></ds-list-row>
     </ds-list>
   </div>`,
 };

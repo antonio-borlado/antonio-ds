@@ -94,6 +94,37 @@ export class DsListRow extends LitElement {
       .chevron {
         color: var(--ds-color-content-disabled);
       }
+      /* Edit mode (Figma "x / List and Table / Row / Edit"). */
+      .edit {
+        all: unset;
+        box-sizing: border-box;
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--ds-size-24);
+        height: var(--ds-size-24);
+        margin-inline-end: var(--ds-space-sm);
+        border-radius: var(--ds-radius-full);
+        color: var(--ds-color-content-on-accent);
+        cursor: pointer;
+      }
+      .edit:focus-visible {
+        outline: var(--ds-border-width-thick) solid var(--ds-color-focus-ring);
+        outline-offset: 2px;
+      }
+      .edit.unselected {
+        border: 1.5px solid var(--ds-color-border-strong);
+      }
+      .edit.selected {
+        background: var(--ds-color-bg-accent);
+      }
+      .edit.add {
+        background: var(--ds-color-bg-success-default);
+      }
+      .edit.remove {
+        background: var(--ds-color-bg-danger-default);
+      }
       @media (prefers-reduced-motion: reduce) {
         .row {
           transition: none;
@@ -115,6 +146,12 @@ export class DsListRow extends LitElement {
   /** Makes the row clickable without being a link (fires `click`). */
   @property({ type: Boolean, reflect: true }) interactive = false;
   @property({ type: Boolean, reflect: true, attribute: 'no-separator' }) noSeparator = false;
+  /**
+   * Edit mode control before the row: `select` (checkbox circle, toggles `selected`), `add` or `remove`.
+   * `add`/`remove` fire `ds-edit` with `detail.action`. Rows in edit mode don't navigate.
+   */
+  @property({ reflect: true }) edit: '' | 'select' | 'add' | 'remove' = '';
+  @property({ type: Boolean, reflect: true }) selected = false;
 
   private hasLeading = false;
 
@@ -135,8 +172,30 @@ export class DsListRow extends LitElement {
     }
   }
 
+  private onEdit(e: Event) {
+    e.stopPropagation();
+    if (this.edit === 'select') {
+      this.selected = !this.selected;
+      this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+    } else this.dispatchEvent(new CustomEvent('ds-edit', { bubbles: true, composed: true, detail: { action: this.edit } }));
+  }
+
+  private editControl() {
+    if (!this.edit) return nothing;
+    const name = this.label || 'fila';
+    if (this.edit === 'select')
+      return html`<button class="edit ${this.selected ? 'selected' : 'unselected'}" role="checkbox" aria-checked=${this.selected ? 'true' : 'false'} aria-label="Seleccionar ${name}" @click=${this.onEdit}>
+        ${this.selected ? html`<ds-icon name="check" size="sm"></ds-icon>` : nothing}
+      </button>`;
+    const add = this.edit === 'add';
+    return html`<button class="edit ${this.edit}" aria-label="${add ? 'Añadir' : 'Quitar'} ${name}" @click=${this.onEdit}>
+      <ds-icon name=${add ? 'plus' : 'minus'} size="sm"></ds-icon>
+    </button>`;
+  }
+
   private content() {
     return html`
+      ${this.editControl()}
       <span class="leading ${this.hasLeading ? 'filled' : ''}"><slot name="leading" @slotchange=${this.onLeadingChange}></slot></span>
       <span class="container">
         <span class="text">
@@ -153,6 +212,7 @@ export class DsListRow extends LitElement {
   }
 
   render() {
+    if (this.edit) return html`<div class="row" part="row">${this.content()}</div>`;
     if (this.href) return html`<a class="row interactive" part="row" href=${this.href}>${this.content()}</a>`;
     if (this.interactive)
       return html`<div class="row interactive" part="row" role="button" tabindex="0" @keydown=${this.onKeydown}>${this.content()}</div>`;

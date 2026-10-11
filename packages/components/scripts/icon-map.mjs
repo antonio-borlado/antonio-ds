@@ -41,6 +41,7 @@ export const ICONS = [
   ['link', 'link', 'link', 'link'],
   ['filter', 'funnel', 'funnel', 'filter_alt'],
   ['sort', 'arrow-up-down', 'arrows-up-down', 'swap_vert'],
+  ['chevrons-up-down', 'chevrons-up-down', 'chevron-up-down', 'unfold_more'],
   ['more-horizontal', 'ellipsis', 'ellipsis-horizontal', 'more_horiz'],
   ['more-vertical', 'ellipsis-vertical', 'ellipsis-vertical', 'more_vert'],
   ['eye', 'eye', 'eye', 'visibility'],
