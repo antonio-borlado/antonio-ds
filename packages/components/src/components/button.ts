@@ -25,9 +25,9 @@ export class DsButton extends LitElement {
         display: flex;
       }
       button {
-        --_bg: var(--ds-button-primary-bg);
-        --_bg-hover: var(--ds-button-primary-bg-hover);
-        --_fg: var(--ds-button-primary-fg);
+        --_bg: var(--ds-color-bg-accent);
+        --_bg-hover: var(--ds-color-bg-accent-hover);
+        --_fg: var(--ds-color-content-on-accent);
         --_border: transparent;
         all: unset;
         box-sizing: border-box;
@@ -36,15 +36,15 @@ export class DsButton extends LitElement {
         align-items: center;
         justify-content: center;
         gap: var(--ds-space-xs);
-        height: var(--ds-button-height-md);
-        padding-inline: var(--ds-button-padding-x-md);
-        border-radius: var(--ds-button-radius);
+        height: var(--ds-size-40);
+        padding-inline: var(--ds-space-md);
+        border-radius: var(--ds-radius-control);
         border: var(--ds-border-width-thin) solid var(--_border);
         background: var(--_bg);
         color: var(--_fg);
         font: inherit;
         font-size: var(--ds-typography-size-body);
-        font-weight: var(--ds-button-font-weight);
+        font-weight: var(--ds-font-weight-medium);
         line-height: 1;
         white-space: nowrap;
         cursor: pointer;
@@ -62,29 +62,29 @@ export class DsButton extends LitElement {
         cursor: not-allowed;
       }
       :host([variant='secondary']) button {
-        --_bg: var(--ds-button-secondary-bg);
-        --_bg-hover: var(--ds-button-secondary-bg-hover);
-        --_fg: var(--ds-button-secondary-fg);
-        --_border: var(--ds-button-secondary-border);
+        --_bg: var(--ds-color-bg-surface);
+        --_bg-hover: var(--ds-color-bg-subtle);
+        --_fg: var(--ds-color-content-primary);
+        --_border: var(--ds-color-border-strong);
       }
       :host([variant='ghost']) button {
-        --_bg: var(--ds-button-ghost-bg);
-        --_bg-hover: var(--ds-button-ghost-bg-hover);
-        --_fg: var(--ds-button-ghost-fg);
+        --_bg: transparent;
+        --_bg-hover: var(--ds-color-bg-accent-subtle);
+        --_fg: var(--ds-color-content-accent);
       }
       :host([variant='danger']) button {
-        --_bg: var(--ds-button-danger-bg);
-        --_bg-hover: var(--ds-button-danger-bg-hover);
-        --_fg: var(--ds-button-danger-fg);
+        --_bg: var(--ds-color-bg-danger-default);
+        --_bg-hover: var(--ds-color-bg-danger-hover);
+        --_fg: var(--ds-color-content-on-accent);
       }
       :host([size='sm']) button {
-        height: var(--ds-button-height-sm);
-        padding-inline: var(--ds-button-padding-x-sm);
+        height: var(--ds-size-32);
+        padding-inline: var(--ds-space-sm);
         font-size: var(--ds-typography-size-small);
       }
       :host([size='lg']) button {
-        height: var(--ds-button-height-lg);
-        padding-inline: var(--ds-button-padding-x-lg);
+        height: var(--ds-size-48);
+        padding-inline: var(--ds-space-lg);
       }
       @media (prefers-reduced-motion: reduce) {
         button {

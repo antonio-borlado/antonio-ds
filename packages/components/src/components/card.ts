@@ -20,14 +20,14 @@ export class DsCard extends LitElement {
         display: flex;
         flex-direction: column;
         gap: var(--ds-space-md);
-        padding: var(--ds-card-padding);
-        border-radius: var(--ds-card-radius);
-        border: var(--ds-border-width-thin) solid var(--ds-card-border);
-        background: var(--ds-card-bg);
+        padding: var(--ds-space-lg);
+        border-radius: var(--ds-radius-container);
+        border: var(--ds-border-width-thin) solid var(--ds-color-border-default);
+        background: var(--ds-color-bg-surface);
         color: var(--ds-color-content-primary);
       }
       :host([elevated]) .card {
-        box-shadow: var(--ds-card-shadow);
+        box-shadow: var(--ds-shadow-sm);
       }
       ::slotted([slot='header']) {
         margin: 0;

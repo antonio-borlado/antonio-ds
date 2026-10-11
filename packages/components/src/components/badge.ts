@@ -11,13 +11,13 @@ export class DsBadge extends LitElement {
     base,
     css`
       :host {
-        --_bg: var(--ds-badge-neutral-bg);
-        --_fg: var(--ds-badge-neutral-fg);
+        --_bg: var(--ds-color-bg-subtle);
+        --_fg: var(--ds-color-content-secondary);
         display: inline-flex;
         align-items: center;
         gap: var(--ds-space-2xs);
-        padding: var(--ds-space-3xs) var(--ds-badge-padding-x);
-        border-radius: var(--ds-badge-radius);
+        padding: var(--ds-space-3xs) var(--ds-space-xs);
+        border-radius: var(--ds-radius-full);
         background: var(--_bg);
         color: var(--_fg);
         font-size: var(--ds-typography-size-caption);
@@ -26,20 +26,20 @@ export class DsBadge extends LitElement {
         white-space: nowrap;
       }
       :host([variant='accent']) {
-        --_bg: var(--ds-badge-accent-bg);
-        --_fg: var(--ds-badge-accent-fg);
+        --_bg: var(--ds-color-bg-accent-subtle);
+        --_fg: var(--ds-color-content-accent);
       }
       :host([variant='success']) {
-        --_bg: var(--ds-badge-success-bg);
-        --_fg: var(--ds-badge-success-fg);
+        --_bg: var(--ds-color-bg-success-subtle);
+        --_fg: var(--ds-color-content-success);
       }
       :host([variant='warning']) {
-        --_bg: var(--ds-badge-warning-bg);
-        --_fg: var(--ds-badge-warning-fg);
+        --_bg: var(--ds-color-bg-warning-subtle);
+        --_fg: var(--ds-color-content-warning);
       }
       :host([variant='danger']) {
-        --_bg: var(--ds-badge-danger-bg);
-        --_fg: var(--ds-badge-danger-fg);
+        --_bg: var(--ds-color-bg-danger-subtle);
+        --_fg: var(--ds-color-content-danger);
       }
     `,
   ];

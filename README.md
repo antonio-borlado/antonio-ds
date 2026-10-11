@@ -86,6 +86,9 @@ En Figma son estilos de texto `text/mobile/<rol>` y `text/desktop/<rol>`; en có
 | body | 16 | 16 |
 | small | 13 | 13 |
 | caption | 12 (mínimo legible) | 12 |
-- `components/components` — tokens de componente que solo apuntan a semánticos.
+- `typography/text-styles` — estilos de texto compuestos para Figma (`text/mobile|desktop/<rol>`).
+
+No hay capa de tokens de componente: los componentes consumen directamente semánticos (`color.bg.*`, `color.content.*`…),
+tokens de marca (`radius.control`, `font.family.*`) y escalas (`space.*`, `size.*`).
 
 Más: [Conectar Figma](docs/FIGMA.md) · [Añadir una marca](docs/BRANDS.md) · [Iconos](docs/ICONS.md) · [Publicar](docs/PUBLISHING.md)
