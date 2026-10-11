@@ -106,4 +106,7 @@ En Figma son estilos de texto `text/mobile/<rol>` y `text/desktop/<rol>`; en có
 No hay capa de tokens de componente: los componentes consumen directamente semánticos (`color.bg.*`, `color.content.*`…),
 tokens de marca (`radius.control`, `font.family.*`) y escalas (`space.*`, `size.*`).
 
+**Claude Code**: la skill [`skills/antonio-ds`](skills/README.md) hace que cualquier proyecto use el DS; descarga en cada uso
+la referencia generada de la última versión (`dist/REFERENCE.md` de `@antonio-ds/components`).
+
 Más: [Conectar Figma](docs/FIGMA.md) · [Añadir una marca](docs/BRANDS.md) · [Iconos](docs/ICONS.md) · [Publicar](docs/PUBLISHING.md)

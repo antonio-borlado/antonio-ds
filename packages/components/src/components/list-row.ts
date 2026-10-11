@@ -145,12 +145,14 @@ export class DsListRow extends LitElement {
   @property() href = '';
   /** Makes the row clickable without being a link (fires `click`). */
   @property({ type: Boolean, reflect: true }) interactive = false;
+  /** Hides the bottom separator (the last row never shows one). */
   @property({ type: Boolean, reflect: true, attribute: 'no-separator' }) noSeparator = false;
   /**
    * Edit mode control before the row: `select` (checkbox circle, toggles `selected`), `add` or `remove`.
    * `add`/`remove` fire `ds-edit` with `detail.action`. Rows in edit mode don't navigate.
    */
   @property({ reflect: true }) edit: '' | 'select' | 'add' | 'remove' = '';
+  /** Selected state when `edit="select"`. */
   @property({ type: Boolean, reflect: true }) selected = false;
 
   private hasLeading = false;
