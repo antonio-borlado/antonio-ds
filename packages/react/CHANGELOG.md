@@ -1,5 +1,12 @@
 # @antonio-ds/react
 
+## 1.3.0
+
+### Patch Changes
+
+- Updated dependencies [6f44d43]
+  - @antonio-ds/components@1.3.0
+
 ## 1.2.0
 
 ### Patch Changes
