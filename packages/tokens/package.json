@@ -1,6 +1,6 @@
 {
   "name": "@antonio-ds/tokens",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Design tokens and multi-brand themes (CSS variables, JS, JSON)",
   "type": "module",
   "license": "MIT",
