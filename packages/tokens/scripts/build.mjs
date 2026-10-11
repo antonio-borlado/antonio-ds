@@ -171,15 +171,17 @@ ${[
   ['h1', 'medium', 'tight', 'heading'],
   ['h2', 'medium', 'tight', 'heading'],
   ['h3', 'medium', 'snug', 'heading'],
+  ['lead', 'regular', 'snug', 'body'],
   ['body', 'regular', 'normal', 'body'],
   ['body-medium', 'medium', 'normal', 'body'],
   ['small', 'regular', 'normal', 'body'],
+  ['small-medium', 'medium', 'normal', 'body'],
   ['caption', 'regular', 'normal', 'body'],
 ]
   .map(
     ([role, weight, line, track]) => `.ds-text-${role} {
   font-family: var(--${PREFIX}-font-family-${track});
-  font-size: var(--${PREFIX}-typography-size-${role === 'body-medium' ? 'body' : role});
+  font-size: var(--${PREFIX}-typography-size-${{ 'body-medium': 'body', 'small-medium': 'small' }[role] ?? role});
   font-weight: var(--${PREFIX}-font-weight-${weight});
   line-height: var(--${PREFIX}-font-line-height-${line});
   letter-spacing: var(--${PREFIX}-font-tracking-${track});

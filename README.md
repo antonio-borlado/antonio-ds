@@ -12,8 +12,8 @@ Figma (Tokens Studio) ──push──▶ tokens/tokens.json ──CI──▶ n
 | Paquete | Qué es |
 | --- | --- |
 | `@antonio-ds/tokens` | Variables CSS `--ds-*` por marca y tema, JS/TS, JSON y `ds-theme.js` (loader para CDN) |
-| `@antonio-ds/components` | Web Components en Lit: `<ds-button>`, `<ds-input>`, `<ds-card>`, `<ds-badge>`, `<ds-icon>`, `<ds-switch>`, `<ds-list>` (+ `ds-list-row`, `ds-list-header`, `ds-list-footer`) |
-| `@antonio-ds/react` | Wrappers React (`Button`, `Input`, `Card`, `Badge`, `Icon`, `Switch`, `List`, `ListRow`, `ListHeader`, `ListFooter`, `Theme`) |
+| `@antonio-ds/components` | Web Components en Lit: `<ds-button>`, `<ds-input>`, `<ds-card>`, `<ds-badge>`, `<ds-icon>`, `<ds-switch>`, `<ds-stepper>`, `<ds-select>`, `<ds-date-picker>`, `<ds-list>` (+ `ds-list-row`, `ds-list-header`, `ds-list-footer`) |
+| `@antonio-ds/react` | Wrappers React (`Button`, `Input`, `Card`, `Badge`, `Icon`, `Switch`, `Stepper`, `Select`, `DatePicker`, `List`, `ListRow`, `ListHeader`, `ListFooter`, `Theme`) |
 | `apps/docs` | Storybook con selector de marca, tema y viewport (se publica en Vercel) |
 
 ## Usar el DS en un producto
@@ -50,6 +50,9 @@ import { Button, Theme } from '@antonio-ds/react';
 </ds-list>
 ```
 
+Controles para filas: `<ds-stepper>`, `<ds-select>` (pop-up sobre un `<select>` nativo), `<ds-date-picker type="date|time|datetime">`.
+Modo edición: `<ds-list-row edit="select|add|remove" selected>`.
+
 **Iconos**: `<ds-icon name="search">` con 56 iconos en Lucide (por defecto), Material Symbols o Heroicons; cada proyecto elige con `data-icon-set`. Ver [docs/ICONS.md](docs/ICONS.md).
 
 **Valores en JS** (canvas, gráficos, apps nativas): `import { cssVar, values } from '@antonio-ds/tokens'`.
@@ -80,7 +83,7 @@ Manrope, solo **Regular 400** y **Medium 500**. Escala de ratio **1.6** con medi
 a partir de `font.scale.base` y `font.scale.ratio`: cambia el ratio en Tokens Studio y se recalcula toda la escala.
 Interletrado −1% en texto y −2% en títulos (`font.tracking.body` / `font.tracking.heading`).
 
-**Estilos de texto** (set `typography/text-styles`): `display`, `h1`, `h2`, `h3`, `body`, `body-medium`, `small`, `caption`.
+**Estilos de texto** (set `typography/text-styles`): `display`, `h1`, `h2`, `h3`, `lead`, `body`, `body-medium`, `small`, `small-medium`, `caption`.
 En Figma son estilos de texto `text/mobile/<rol>` y `text/desktop/<rol>`; en código, clases `.ds-text-<rol>`
 (incluidas en `global.css`) que cambian de móvil a desktop solas.
 
@@ -91,11 +94,12 @@ En Figma son estilos de texto `text/mobile/<rol>` y `text/desktop/<rol>`; en có
 | Rol | Móvil | Desktop |
 | --- | --- | --- |
 | display | 66 | 105 |
+| lead | 20 | 20 |
 | h1 | 41 | 66 |
 | h2 | 26 | 41 |
 | h3 | 20 | 26 |
 | body | 16 | 16 |
-| small | 13 | 13 |
+| small / small-medium | 13 | 13 |
 | caption | 12 (mínimo legible) | 12 |
 - `typography/text-styles` — estilos de texto compuestos para Figma (`text/mobile|desktop/<rol>`).
 
