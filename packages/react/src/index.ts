@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
-import { DsBadge, DsButton, DsCard, DsIcon, DsInput } from '@antonio-ds/components';
+import { DsBadge, DsButton, DsCard, DsIcon, DsInput, DsList, DsListFooter, DsListHeader, DsListRow, DsSwitch } from '@antonio-ds/components';
 
-export type { BadgeVariant, ButtonSize, ButtonVariant, IconName, IconSet, IconSize } from '@antonio-ds/components';
+export type { BadgeVariant, ButtonSize, ButtonVariant, IconName, IconSet, IconSize, ListHeaderType, ListType } from '@antonio-ds/components';
 export { iconNames, iconSets, registerIconSet } from '@antonio-ds/components';
 
 export const Button = createComponent({ tagName: 'ds-button', elementClass: DsButton, react: React });
@@ -22,6 +22,18 @@ export const Card = createComponent({ tagName: 'ds-card', elementClass: DsCard, 
 export const Badge = createComponent({ tagName: 'ds-badge', elementClass: DsBadge, react: React });
 
 export const Icon = createComponent({ tagName: 'ds-icon', elementClass: DsIcon, react: React });
+
+export const List = createComponent({ tagName: 'ds-list', elementClass: DsList, react: React });
+export const ListRow = createComponent({ tagName: 'ds-list-row', elementClass: DsListRow, react: React });
+export const ListHeader = createComponent({ tagName: 'ds-list-header', elementClass: DsListHeader, react: React });
+export const ListFooter = createComponent({ tagName: 'ds-list-footer', elementClass: DsListFooter, react: React });
+
+export const Switch = createComponent({
+  tagName: 'ds-switch',
+  elementClass: DsSwitch,
+  react: React,
+  events: { onChange: 'change' as EventName<Event> },
+});
 
 /**
  * Applies a brand, mode and icon library to its subtree: <Theme brand="base" mode="dark" iconSet="material">…</Theme>

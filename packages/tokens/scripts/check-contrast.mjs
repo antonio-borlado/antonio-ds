@@ -18,6 +18,7 @@ const PAIRS = [
   ['color.content.on-accent', 'color.bg.danger.hover', 4.5],
   ['color.content.accent', 'color.bg.surface', 4.5],
   ['color.content.accent', 'color.bg.accent-subtle', 4.5],
+  ['color.content.on-accent', 'color.bg.success.default', 4.5],
   ['color.content.success', 'color.bg.success.subtle', 4.5],
   ['color.content.warning', 'color.bg.warning.subtle', 4.5],
   ['color.content.danger', 'color.bg.danger.subtle', 4.5],
