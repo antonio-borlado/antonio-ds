@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
-import { DsBadge, DsButton, DsCard, DsInput } from '@antonio-ds/components';
+import { DsBadge, DsButton, DsCard, DsIcon, DsInput } from '@antonio-ds/components';
 
-export type { BadgeVariant, ButtonSize, ButtonVariant } from '@antonio-ds/components';
+export type { BadgeVariant, ButtonSize, ButtonVariant, IconName, IconSet, IconSize } from '@antonio-ds/components';
+export { iconNames, iconSets, registerIconSet } from '@antonio-ds/components';
 
 export const Button = createComponent({ tagName: 'ds-button', elementClass: DsButton, react: React });
 
@@ -20,13 +21,25 @@ export const Card = createComponent({ tagName: 'ds-card', elementClass: DsCard, 
 
 export const Badge = createComponent({ tagName: 'ds-badge', elementClass: DsBadge, react: React });
 
-/** Applies a brand/mode to its subtree: <Theme brand="base" mode="dark">…</Theme> */
+export const Icon = createComponent({ tagName: 'ds-icon', elementClass: DsIcon, react: React });
+
+/**
+ * Applies a brand, mode and icon library to its subtree: <Theme brand="base" mode="dark" iconSet="material">…</Theme>
+ * Libraries other than lucide must be imported once: import '@antonio-ds/components/icons/material';
+ */
 export function Theme({
   brand,
   mode,
+  iconSet,
   as: Tag = 'div',
   children,
   ...rest
-}: { brand?: string; mode?: 'light' | 'dark'; as?: React.ElementType; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>) {
-  return React.createElement(Tag, { 'data-brand': brand, 'data-theme': mode, ...rest }, children);
+}: {
+  brand?: string;
+  mode?: 'light' | 'dark';
+  iconSet?: string;
+  as?: React.ElementType;
+  children?: React.ReactNode;
+} & React.HTMLAttributes<HTMLElement>) {
+  return React.createElement(Tag, { 'data-brand': brand, 'data-theme': mode, 'data-icon-set': iconSet, ...rest }, children);
 }

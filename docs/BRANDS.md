@@ -7,7 +7,9 @@ Una marca es solo un conjunto de tokens: los componentes no cambian.
 En Tokens Studio (o editando `tokens/tokens.json`):
 
 1. Crea los sets `brands/acme/brand`, `brands/acme/light` y `brands/acme/dark` duplicando los de `base`.
-2. En `brand`, cambia fuentes y radios (`font.family.body`, `radius.control`…). Si necesitas colores nuevos, añádelos a `core/primitives` (p. ej. `color.acme.500`).
+2. En `brand`, cambia fuentes, radios e iconos: `font.family.body`/`heading` (apuntando a una familia de `core/primitives`),
+   `font.webfont` (la familia y pesos de Google Fonts que se cargan, p. ej. `DM Sans:wght@400;500`), `radius.control` e
+   `icon.set` (`lucide`, `material` o `heroicons`). Si necesitas colores nuevos, añádelos a `core/primitives` (p. ej. `color.acme.500`).
 3. En `light`/`dark`, apunta los semánticos a tus primitivos (`color.accent.default` → `{color.acme.600}`).
 4. Añade los temas en `$themes` (`acme · light · mobile`, etc.) y el orden en `$metadata.tokenSetOrder`.
 5. `npm run build && npm test` — el test de contraste avisa si algún par no cumple AA.

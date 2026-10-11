@@ -34,15 +34,31 @@ export const Primitives: StoryObj = {
 };
 
 export const Typography: StoryObj = {
-  name: 'Tipografía (responsive)',
+  name: 'Tipografía',
   render: () => html`
-    <p style="color:var(--ds-color-text-secondary)">Cambia el viewport a Mobile/Desktop para ver la escala adaptarse.</p>
+    <p style="color:var(--ds-color-text-secondary);margin:0 0 24px">
+      Manrope · Regular 400 y Medium 500 · escala 1.6 con medios pasos (×√1.6) desde 16px.
+      Cambia el viewport a Mobile/Desktop: cada título baja un paso en móvil.
+    </p>
+    ${h('Roles (typography.size)')}
     ${group('typography.size.').map(
-      (p) => html`<div style="display:flex;align-items:baseline;gap:24px;padding:12px 0;border-bottom:1px solid var(--ds-color-border-default)">
+      (p) => html`<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px;padding:12px 0;border-bottom:1px solid var(--ds-color-border-default)">
         <code style="width:180px;flex:none;font-size:12px;color:var(--ds-color-text-secondary)">${p}</code>
-        <span style="font-size:var(--ds-${p.replaceAll('.', '-')});line-height:var(--ds-font-line-height-tight);font-weight:600">Diseño para todos</span>
+        <span style="font-size:var(--ds-${p.replaceAll('.', '-')});line-height:var(--ds-font-line-height-tight);font-weight:var(--ds-font-weight-medium);letter-spacing:var(--ds-font-tracking-heading);min-width:0">Diseño para todos</span>
       </div>`,
     )}
+    <div style="height:32px"></div>
+    ${h('Escala (font.size)')}
+    ${group('font.size.').map(
+      (p) => html`<div style="display:flex;align-items:baseline;gap:24px;padding:8px 0;overflow:hidden">
+        <code style="width:180px;flex:none;font-size:12px;color:var(--ds-color-text-secondary)">${p}</code>
+        <span style="font-size:var(--ds-${p.replaceAll('.', '-')});line-height:var(--ds-font-line-height-tight);white-space:nowrap">Aa</span>
+      </div>`,
+    )}
+    <div style="height:32px"></div>
+    ${h('Pesos')}
+    <p style="font-size:var(--ds-typography-size-h3);margin:0 0 8px;font-weight:var(--ds-font-weight-regular)">Regular 400 — texto de lectura</p>
+    <p style="font-size:var(--ds-typography-size-h3);margin:0;font-weight:var(--ds-font-weight-medium)">Medium 500 — títulos, botones, etiquetas</p>
   `,
 };
 

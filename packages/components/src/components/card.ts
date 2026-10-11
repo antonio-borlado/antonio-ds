@@ -34,6 +34,8 @@ export class DsCard extends LitElement {
         font-size: var(--ds-typography-size-h3);
         line-height: var(--ds-font-line-height-snug);
         font-family: var(--ds-font-family-heading);
+        font-weight: var(--ds-font-weight-medium);
+        letter-spacing: var(--ds-font-tracking-heading);
       }
       ::slotted([slot='footer']) {
         display: flex;

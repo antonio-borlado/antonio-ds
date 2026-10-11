@@ -51,12 +51,17 @@ function dictionary(sets) {
 
 const fromSets = (names) => (token) => names.some((n) => token.filePath === setPath(n));
 
+// Tokens consumed by the loader/JS only. `font.webfont` holds a Google Fonts spec ("Manrope:wght@400;500")
+// whose semicolons would break a CSS declaration.
+const NOT_CSS = new Set(['font.webfont']);
+
 /** CSS custom properties for tokens of `outputSets`, resolved against `contextSets`. */
 async function cssBlock(contextSets, outputSets, selector) {
   const sd = dictionary(contextSets);
   const tokens = await sd.getPlatformTokens('css');
   const lines = tokens.allTokens
     .filter(fromSets(outputSets))
+    .filter((token) => !NOT_CSS.has(token.path.join('.')))
     .map((token) => {
       const value = refValue(token);
       return `  --${token.name}: ${value};`;
@@ -138,8 +143,20 @@ body {
   font-family: var(--${PREFIX}-font-family-body);
   font-size: var(--${PREFIX}-typography-size-body);
   line-height: var(--${PREFIX}-font-line-height-normal);
+  letter-spacing: var(--${PREFIX}-font-tracking-body);
   -webkit-font-smoothing: antialiased;
 }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--${PREFIX}-font-family-heading);
+  font-weight: var(--${PREFIX}-font-weight-medium);
+  line-height: var(--${PREFIX}-font-line-height-tight);
+  letter-spacing: var(--${PREFIX}-font-tracking-heading);
+}
+h1 { font-size: var(--${PREFIX}-typography-size-h1); }
+h2 { font-size: var(--${PREFIX}-typography-size-h2); }
+h3 { font-size: var(--${PREFIX}-typography-size-h3); }
+small { font-size: var(--${PREFIX}-typography-size-small); }
+b, strong { font-weight: var(--${PREFIX}-font-weight-medium); }
 `;
   writeFileSync(join(DIST, 'css/global.css'), global);
 
@@ -163,6 +180,14 @@ body {
   }
   writeFileSync(join(DIST, 'css/all.css'), all);
 
+  // Web fonts per brand (Google Fonts). Loaded by ds-theme.js, or via css/fonts.css in bundled apps.
+  const fonts = {};
+  for (const brand of brands) {
+    const spec = resolved[`${brand}-${modesOf(brand)[0]}-mobile`]['font.webfont'];
+    if (spec) fonts[brand] = `https://fonts.googleapis.com/css2?family=${spec.replaceAll(' ', '+')}&display=swap`;
+  }
+  writeFileSync(join(DIST, 'css/fonts.css'), Object.values([...new Set(Object.values(fonts))]).map((u) => `@import url("${u}");`).join('\n') + '\n');
+
   // JS: token path → CSS var reference, plus resolved values per theme (for canvas, charts, native bridges).
   const anyFlat = resolved[`${DEFAULT_BRAND}-${modesOf(DEFAULT_BRAND)[0]}-mobile`];
   const vars = Object.fromEntries(Object.keys(anyFlat).map((p) => [p, `var(--${[PREFIX, ...p.split('.')].join('-')})`]));
@@ -172,6 +197,7 @@ export const defaultBrand = ${JSON.stringify(DEFAULT_BRAND)};
 export const themes = ${JSON.stringify(themes)};
 export const vars = ${JSON.stringify(vars, null, 2)};
 export const values = ${JSON.stringify(resolved)};
+export const fonts = ${JSON.stringify(fonts)};
 export const cssVar = (path) => vars[path] ?? \`var(--${PREFIX}-\${path.split('.').join('-')})\`;
 `);
   const pathUnion = Object.keys(vars).map((p) => JSON.stringify(p)).join(' | ');
@@ -183,6 +209,8 @@ export declare const defaultBrand: Brand;
 export declare const themes: { id: string; brand: Brand; mode: Mode }[];
 export declare const vars: Record<TokenPath, string>;
 export declare const values: Record<string, Record<TokenPath, string>>;
+/** Google Fonts stylesheet URL per brand. */
+export declare const fonts: Partial<Record<Brand, string>>;
 export declare function cssVar(path: TokenPath | (string & {})): string;
 `);
 
@@ -200,6 +228,17 @@ export declare function cssVar(path: TokenPath | (string & {})): string;
     el.textContent = css;
     (document.head || root).appendChild(el);
   }
+  var FONTS = ${JSON.stringify(fonts)};
+  var loadFonts = !script || script.getAttribute('data-fonts') !== 'false';
+  function loadFont(brand) {
+    var url = loadFonts && FONTS[brand];
+    if (!url || document.querySelector('link[data-ds-font="' + brand + '"]')) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = url;
+    link.setAttribute('data-ds-font', brand);
+    (document.head || root).appendChild(link);
+  }
   inject('ds-tokens', CSS);
   if (!script || script.getAttribute('data-global') !== 'false') inject('ds-global', GLOBAL);
   var api = {
@@ -208,7 +247,10 @@ export declare function cssVar(path: TokenPath | (string & {})): string;
     setTheme: function (opts) {
       opts = opts || {};
       var el = opts.target || root;
-      if (opts.brand) el.setAttribute('data-brand', opts.brand);
+      if (opts.brand) {
+        el.setAttribute('data-brand', opts.brand);
+        loadFont(opts.brand);
+      }
       if (opts.mode === 'auto') el.removeAttribute('data-theme');
       else if (opts.mode) el.setAttribute('data-theme', opts.mode);
     },
@@ -216,12 +258,19 @@ export declare function cssVar(path: TokenPath | (string & {})): string;
       el = el || root;
       var mode = el.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       return { brand: el.getAttribute('data-brand') || ${JSON.stringify(DEFAULT_BRAND)}, mode: mode };
+    },
+    /** Icon library for the page or a subtree: 'lucide' | 'material' | 'heroicons'. Its set must be loaded. */
+    setIconSet: function (name, target) {
+      (target || root).setAttribute('data-icon-set', name);
     }
   };
   if (script) {
     var b = script.getAttribute('data-brand'), m = script.getAttribute('data-mode');
     if (b || m) api.setTheme({ brand: b, mode: m });
+    var icons = script.getAttribute('data-icon-set');
+    if (icons) api.setIconSet(icons);
   }
+  loadFont(root.getAttribute('data-brand') || ${JSON.stringify(DEFAULT_BRAND)});
   window.DS = Object.assign(window.DS || {}, api);
 })();
 `);

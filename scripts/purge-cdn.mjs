@@ -3,8 +3,8 @@
 import { readFileSync } from 'node:fs';
 
 const FILES = {
-  'packages/tokens': ['dist/ds-theme.js', 'dist/css/all.css', 'dist/css/core.css', 'dist/css/global.css'],
-  'packages/components': ['dist/cdn/ds-components.js'],
+  'packages/tokens': ['dist/ds-theme.js', 'dist/css/all.css', 'dist/css/core.css', 'dist/css/global.css', 'dist/css/fonts.css'],
+  'packages/components': ['dist/cdn/ds-components.js', 'dist/cdn/icons-heroicons.js', 'dist/cdn/icons-material.js'],
 };
 
 let failed = false;

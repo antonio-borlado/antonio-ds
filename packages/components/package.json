@@ -20,11 +20,15 @@
       "types": "./dist/types/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./icons/*": {
+      "types": "./dist/types/icons/generated/*.d.ts",
+      "default": "./dist/icons/*.js"
+    },
     "./cdn": "./dist/cdn/ds-components.js"
   },
   "sideEffects": true,
   "scripts": {
-    "build": "vite build && vite build --mode cdn && tsc -p tsconfig.json --emitDeclarationOnly"
+    "build": "node scripts/build-icons.mjs && vite build && vite build --mode cdn && tsc -p tsconfig.json --emitDeclarationOnly"
   },
   "dependencies": {
     "lit": "^3.3.0"
@@ -33,6 +37,9 @@
     "@antonio-ds/tokens": "^0.1.0"
   },
   "devDependencies": {
+    "@material-symbols/svg-400": "^0.48.0",
+    "heroicons": "^2.2.0",
+    "lucide-static": "^1.55.0",
     "vite": "^7.0.0"
   },
   "publishConfig": {
