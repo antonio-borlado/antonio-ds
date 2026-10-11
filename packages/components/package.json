@@ -24,11 +24,13 @@
       "types": "./dist/types/icons/generated/*.d.ts",
       "default": "./dist/icons/*.js"
     },
-    "./cdn": "./dist/cdn/ds-components.js"
+    "./cdn": "./dist/cdn/ds-components.js",
+    "./REFERENCE.md": "./dist/REFERENCE.md",
+    "./custom-elements.json": "./dist/custom-elements.json"
   },
   "sideEffects": true,
   "scripts": {
-    "build": "node scripts/build-icons.mjs && vite build && vite build --mode cdn && tsc -p tsconfig.json --emitDeclarationOnly"
+    "build": "node scripts/build-icons.mjs && vite build && vite build --mode cdn && tsc -p tsconfig.json --emitDeclarationOnly && custom-elements-manifest analyze --litelement --globs \"src/components/*.ts\" --outdir dist --quiet && node scripts/build-reference.mjs"
   },
   "dependencies": {
     "lit": "^3.3.0"
@@ -37,6 +39,7 @@
     "@antonio-ds/tokens": "^1.0.0"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.11.0",
     "@material-symbols/svg-400": "^0.48.0",
     "heroicons": "^2.2.0",
     "lucide-static": "^1.55.0",
@@ -44,5 +47,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "customElements": "dist/custom-elements.json"
 }
