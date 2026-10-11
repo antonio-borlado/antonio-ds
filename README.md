@@ -69,6 +69,10 @@ Manrope, solo **Regular 400** y **Medium 500**. Escala de ratio **1.6** con medi
 a partir de `font.scale.base` y `font.scale.ratio`: cambia el ratio en Tokens Studio y se recalcula toda la escala.
 Interletrado −1% en texto y −2% en títulos (`font.tracking.body` / `font.tracking.heading`).
 
+**Estilos de texto** (set `typography/text-styles`): `display`, `h1`, `h2`, `h3`, `body`, `body-medium`, `small`, `caption`.
+En Figma son estilos de texto `text/mobile/<rol>` y `text/desktop/<rol>`; en código, clases `.ds-text-<rol>`
+(incluidas en `global.css`) que cambian de móvil a desktop solas.
+
 | Paso | m1 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | px | 13 | 16 | 20 | 26 | 32 | 41 | 52 | 66 | 83 | 105 |
