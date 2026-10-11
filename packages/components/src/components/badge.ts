@@ -21,7 +21,7 @@ export class DsBadge extends LitElement {
         background: var(--_bg);
         color: var(--_fg);
         font-size: var(--ds-typography-size-caption);
-        font-weight: var(--ds-font-weight-semibold);
+        font-weight: var(--ds-font-weight-medium);
         line-height: var(--ds-font-line-height-normal);
         white-space: nowrap;
       }

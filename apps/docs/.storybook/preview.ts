@@ -3,6 +3,8 @@ import { brands } from '@antonio-ds/tokens';
 import '@antonio-ds/tokens/css/all.css';
 import '@antonio-ds/tokens/css/global.css';
 import '@antonio-ds/components';
+import '@antonio-ds/components/icons/heroicons';
+import '@antonio-ds/components/icons/material';
 
 const preview: Preview = {
   globalTypes: {
@@ -22,8 +24,22 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    iconSet: {
+      description: 'Librería de iconos',
+      toolbar: {
+        title: 'Iconos',
+        icon: 'grid',
+        items: [
+          { value: 'lucide', title: 'Lucide' },
+          { value: 'material', title: 'Material Symbols' },
+          { value: 'heroicons', title: 'Heroicons' },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
   initialGlobals: {
+    iconSet: 'lucide',
     brand: brands[0],
     mode: 'light',
     viewport: { value: undefined },
@@ -33,6 +49,7 @@ const preview: Preview = {
       const root = document.documentElement;
       root.setAttribute('data-brand', globals.brand);
       root.setAttribute('data-theme', globals.mode);
+      root.setAttribute('data-icon-set', globals.iconSet);
       return story();
     },
   ],

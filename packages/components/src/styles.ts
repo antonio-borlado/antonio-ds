@@ -4,6 +4,7 @@ import { css } from 'lit';
 export const base = css`
   :host {
     font-family: var(--ds-font-family-body);
+    letter-spacing: var(--ds-font-tracking-body);
     box-sizing: border-box;
   }
   *,
