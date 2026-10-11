@@ -12,8 +12,8 @@ Figma (Tokens Studio) ──push──▶ tokens/tokens.json ──CI──▶ n
 | Paquete | Qué es |
 | --- | --- |
 | `@antonio-ds/tokens` | Variables CSS `--ds-*` por marca y tema, JS/TS, JSON y `ds-theme.js` (loader para CDN) |
-| `@antonio-ds/components` | Web Components en Lit: `<ds-button>`, `<ds-input>`, `<ds-card>`, `<ds-badge>`, `<ds-icon>` |
-| `@antonio-ds/react` | Wrappers React (`Button`, `Input`, `Card`, `Badge`, `Icon`, `Theme`) |
+| `@antonio-ds/components` | Web Components en Lit: `<ds-button>`, `<ds-input>`, `<ds-card>`, `<ds-badge>`, `<ds-icon>`, `<ds-switch>`, `<ds-list>` (+ `ds-list-row`, `ds-list-header`, `ds-list-footer`) |
+| `@antonio-ds/react` | Wrappers React (`Button`, `Input`, `Card`, `Badge`, `Icon`, `Switch`, `List`, `ListRow`, `ListHeader`, `ListFooter`, `Theme`) |
 | `apps/docs` | Storybook con selector de marca, tema y viewport (se publica en Vercel) |
 
 ## Usar el DS en un producto
@@ -38,6 +38,17 @@ import { Button, Theme } from '@antonio-ds/react';
 ```
 
 **Marca y tema**: `data-brand="<marca>"` y `data-theme="light|dark"` en `<html>` o cualquier contenedor (se pueden anidar). Sin `data-theme`, se sigue la preferencia del sistema. En JS: `DS.setTheme({ brand, mode })`.
+
+**Listas** (igual que *Lists and Tables* en Figma):
+
+```html
+<ds-list type="grouped">
+  <ds-list-header>Ajustes</ds-list-header>
+  <ds-list-row label="Wi-Fi" detail="Casa" disclosure href="/wifi"><ds-icon slot="leading" name="globe"></ds-icon></ds-list-row>
+  <ds-list-row label="Modo oscuro"><ds-switch slot="trailing" label="Modo oscuro"></ds-switch></ds-list-row>
+  <ds-list-footer>Los cambios se guardan automáticamente.</ds-list-footer>
+</ds-list>
+```
 
 **Iconos**: `<ds-icon name="search">` con 56 iconos en Lucide (por defecto), Material Symbols o Heroicons; cada proyecto elige con `data-icon-set`. Ver [docs/ICONS.md](docs/ICONS.md).
 
