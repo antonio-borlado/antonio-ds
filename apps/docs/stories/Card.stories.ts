@@ -7,7 +7,7 @@ const meta: Meta<{ elevated: boolean }> = {
   args: { elevated: true },
   render: (a) => html`<ds-card ?elevated=${a.elevated} style="max-width:380px">
     <h3 slot="header">Plan Pro</h3>
-    <p style="margin:0;color:var(--ds-color-text-secondary)">Todo lo que necesitas para lanzar tus productos con un sistema de diseño compartido.</p>
+    <p style="margin:0;color:var(--ds-color-content-secondary)">Todo lo que necesitas para lanzar tus productos con un sistema de diseño compartido.</p>
     <div slot="footer">
       <ds-button>Empezar</ds-button>
       <ds-button variant="ghost">Saber más</ds-button>

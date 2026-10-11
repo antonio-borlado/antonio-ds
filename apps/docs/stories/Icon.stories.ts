@@ -23,14 +23,14 @@ export const Catalog: StoryObj<Args> = {
   name: 'Catálogo',
   parameters: { controls: { disable: true } },
   render: () => html`
-    <p style="color:var(--ds-color-text-secondary);margin:0 0 16px">
+    <p style="color:var(--ds-color-content-secondary);margin:0 0 16px">
       Cambia la librería en la barra superior (Iconos). Los nombres son los mismos en todas.
     </p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px">
       ${iconNames.map(
         (n) => html`<div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border:1px solid var(--ds-color-border-default);border-radius:var(--ds-radius-md)">
           <ds-icon name=${n} size="lg"></ds-icon>
-          <code style="font-size:12px;color:var(--ds-color-text-secondary)">${n}</code>
+          <code style="font-size:12px;color:var(--ds-color-content-secondary)">${n}</code>
         </div>`,
       )}
     </div>
@@ -44,7 +44,7 @@ export const Compare: StoryObj<Args> = {
     <div style="display:grid;gap:16px">
       ${['lucide', 'material', 'heroicons'].map(
         (set) => html`<div data-icon-set=${set} style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-          <code style="width:96px;font-size:12px;color:var(--ds-color-text-secondary)">${set}</code>
+          <code style="width:96px;font-size:12px;color:var(--ds-color-content-secondary)">${set}</code>
           ${['home', 'search', 'bell', 'settings', 'user', 'heart', 'trash', 'download', 'warning', 'success'].map((n) => html`<ds-icon name=${n} size="lg"></ds-icon>`)}
         </div>`,
       )}
