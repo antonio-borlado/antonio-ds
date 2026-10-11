@@ -1,5 +1,11 @@
 # @antonio-ds/react
 
+## 1.1.0
+
+### Patch Changes
+
+- @antonio-ds/components@1.1.0
+
 ## 1.0.0
 
 ### Minor Changes
