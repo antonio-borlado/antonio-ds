@@ -157,6 +157,28 @@ h2 { font-size: var(--${PREFIX}-typography-size-h2); }
 h3 { font-size: var(--${PREFIX}-typography-size-h3); }
 small { font-size: var(--${PREFIX}-typography-size-small); }
 b, strong { font-weight: var(--${PREFIX}-font-weight-medium); }
+
+/* Text styles: same names as the Figma text styles (text/mobile|desktop/<role>); mobile/desktop switch via tokens. */
+${[
+  ['display', 'medium', 'tight', 'heading'],
+  ['h1', 'medium', 'tight', 'heading'],
+  ['h2', 'medium', 'tight', 'heading'],
+  ['h3', 'medium', 'snug', 'heading'],
+  ['body', 'regular', 'normal', 'body'],
+  ['body-medium', 'medium', 'normal', 'body'],
+  ['small', 'regular', 'normal', 'body'],
+  ['caption', 'regular', 'normal', 'body'],
+]
+  .map(
+    ([role, weight, line, track]) => `.ds-text-${role} {
+  font-family: var(--${PREFIX}-font-family-${track});
+  font-size: var(--${PREFIX}-typography-size-${role === 'body-medium' ? 'body' : role});
+  font-weight: var(--${PREFIX}-font-weight-${weight});
+  line-height: var(--${PREFIX}-font-line-height-${line});
+  letter-spacing: var(--${PREFIX}-font-tracking-${track});
+}`,
+  )
+  .join('\n')}
 `;
   writeFileSync(join(DIST, 'css/global.css'), global);
 
