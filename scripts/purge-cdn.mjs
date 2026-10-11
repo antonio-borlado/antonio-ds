@@ -1,4 +1,4 @@
-// Purges jsDelivr's cache for the floating major-version URLs (e.g. @antonio-ds/tokens@0/...) after a release,
+// Purges jsDelivr's cache for the floating major-version URLs (e.g. @antonio-ds/tokens@1/...) after a release,
 // so products that load the DS from the CDN pick up the new version within minutes.
 import { readFileSync } from 'node:fs';
 

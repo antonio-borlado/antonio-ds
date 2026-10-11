@@ -21,8 +21,8 @@ Figma (Tokens Studio) ──push──▶ tokens/tokens.json ──CI──▶ n
 **Artefacto de Claude / HTML** (se actualiza solo, sin redeploy) — ver [examples/artifact.html](examples/artifact.html):
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@antonio-ds/tokens@0/dist/ds-theme.js" data-brand="base"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/@antonio-ds/components@0/dist/cdn/ds-components.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@antonio-ds/tokens@1/dist/ds-theme.js" data-brand="base"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@antonio-ds/components@1/dist/cdn/ds-components.js"></script>
 <ds-button>Guardar</ds-button>
 ```
 

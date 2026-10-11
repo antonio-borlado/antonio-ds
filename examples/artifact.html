@@ -6,11 +6,11 @@
   <title>Ejemplo DS</title>
   <!--
     Plantilla para artefactos de Claude / HTML estático.
-    @0 = última versión 0.x: los cambios minor/patch del DS llegan solos, sin redeploy.
-    Cuando publiques la 1.0, cambia @0 por @1.
+    @1 = última versión 1.x: los cambios minor/patch del DS llegan solos, sin redeploy.
+    Una versión mayor nueva (2.0) nunca llega sola: cambia @1 por @2 cuando quieras adoptarla.
   -->
-  <script src="https://cdn.jsdelivr.net/npm/@antonio-ds/tokens@0/dist/ds-theme.js"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@antonio-ds/components@0/dist/cdn/ds-components.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@antonio-ds/tokens@1/dist/ds-theme.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@antonio-ds/components@1/dist/cdn/ds-components.js"></script>
   <style>
     main { max-width: var(--ds-layout-max-width); margin: 0 auto; padding: var(--ds-layout-section) var(--ds-layout-gutter); display: grid; gap: var(--ds-space-lg); }
     h1 { font-size: var(--ds-typography-size-h1); line-height: var(--ds-font-line-height-tight); margin: 0; }
@@ -21,7 +21,7 @@
   <main>
     <div class="row">
       <h1>Hola, sistema de diseño</h1>
-      <ds-badge variant="accent">v0</ds-badge>
+      <ds-badge variant="accent">v1</ds-badge>
     </div>
     <ds-card elevated>
       <h3 slot="header">Suscríbete</h3>
