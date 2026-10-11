@@ -60,7 +60,7 @@ npm run storybook   # http://localhost:6006
 
 - `core/primitives` — paleta, espaciado, radios, tipografía. Valores crudos; nunca se usan directamente en componentes.
 - `brands/<marca>/brand` — personalidad de la marca: fuentes (`font.family.*`, `font.webfont`), radios y librería de iconos (`icon.set`).
-- `brands/<marca>/light` · `dark` — colores semánticos (`color.bg.surface`, `color.text.primary`, `color.accent.default`…).
+- `brands/<marca>/light` · `dark` — colores semánticos agrupados por uso: `color.bg.*` (fondos), `color.content.*` (texto e iconos), `color.border.*` y `color.focus.ring`; los estados tienen subfamilia en bg (`color.bg.danger.default`…). Ejemplos (`color.bg.surface`, `color.content.primary`, `color.bg.accent`…).
 - `responsive/mobile` · `desktop` — qué paso de la escala usa cada rol (h1, h2…) y layout; desktop desde 1024px.
 
 ## Tipografía

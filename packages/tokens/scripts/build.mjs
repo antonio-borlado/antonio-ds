@@ -128,6 +128,12 @@ async function build() {
   // Component tokens alias semantic ones; redeclare them on every themed scope so var() re-resolves there
   // (custom properties inherit computed values, so declaring only on :root would freeze nested themes).
   core += await cssBlock(baseCtx, [COMPONENTS], ':root,\n[data-brand],\n[data-theme]');
+  // Renamed tokens keep their old CSS name as an alias until the next major version.
+  const renamed = JSON.parse(readFileSync(join(ROOT, 'scripts/renamed-tokens.json'), 'utf8'));
+  const cssName = (path) => `--${[PREFIX, ...path.split('.')].join('-')}`;
+  core += `/* Deprecated names (renamed in 1.2, removed in 2.0) */\n:root,\n[data-brand],\n[data-theme] {\n${Object.entries(renamed)
+    .map(([from, to]) => `  ${cssName(from)}: var(${cssName(to)});`)
+    .join('\n')}\n}\n`;
   core += await cssBlock(baseCtx, [MOBILE], ':root');
   core += media(`(min-width: ${DESKTOP_MIN_WIDTH})`, await cssBlock([...baseCtx.slice(0, 3), DESKTOP, COMPONENTS], [DESKTOP], ':root'));
   writeFileSync(join(DIST, 'css/core.css'), core);
@@ -139,7 +145,7 @@ html { color-scheme: light dark; }
 body {
   margin: 0;
   background: var(--${PREFIX}-color-bg-canvas);
-  color: var(--${PREFIX}-color-text-primary);
+  color: var(--${PREFIX}-color-content-primary);
   font-family: var(--${PREFIX}-font-family-body);
   font-size: var(--${PREFIX}-typography-size-body);
   line-height: var(--${PREFIX}-font-line-height-normal);

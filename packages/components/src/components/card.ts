@@ -24,7 +24,7 @@ export class DsCard extends LitElement {
         border-radius: var(--ds-card-radius);
         border: var(--ds-border-width-thin) solid var(--ds-card-border);
         background: var(--ds-card-bg);
-        color: var(--ds-color-text-primary);
+        color: var(--ds-color-content-primary);
       }
       :host([elevated]) .card {
         box-shadow: var(--ds-card-shadow);

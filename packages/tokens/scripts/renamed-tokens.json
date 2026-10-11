@@ -1,0 +1,19 @@
+{
+  "color.text.primary": "color.content.primary",
+  "color.text.secondary": "color.content.secondary",
+  "color.text.disabled": "color.content.disabled",
+  "color.text.inverse": "color.content.inverse",
+  "color.text.on-accent": "color.content.on-accent",
+  "color.accent.default": "color.bg.accent",
+  "color.accent.hover": "color.bg.accent-hover",
+  "color.accent.subtle": "color.bg.accent-subtle",
+  "color.accent.text": "color.content.accent",
+  "color.danger.default": "color.bg.danger.default",
+  "color.danger.hover": "color.bg.danger.hover",
+  "color.danger.bg": "color.bg.danger.subtle",
+  "color.danger.fg": "color.content.danger",
+  "color.success.bg": "color.bg.success.subtle",
+  "color.success.fg": "color.content.success",
+  "color.warning.bg": "color.bg.warning.subtle",
+  "color.warning.fg": "color.content.warning"
+}
