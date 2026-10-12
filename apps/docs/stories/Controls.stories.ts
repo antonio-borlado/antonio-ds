@@ -28,3 +28,11 @@ export const DatePicker: StoryObj = {
     <ds-date-picker type="time" label="Hora" value="16:20"></ds-date-picker>
   </div>`,
 };
+
+export const Progress: StoryObj = {
+  render: () => html`<div style="display:grid;gap:16px;max-width:320px">
+    <ds-progress label="Subida" value="40"></ds-progress>
+    <ds-progress label="Semana 3 de 10" value="3" max="10" segments="10"></ds-progress>
+    <ds-progress label="Semana 2,5 de 4" value="2.5" max="4" segments="4"></ds-progress>
+  </div>`,
+};
