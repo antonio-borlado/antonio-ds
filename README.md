@@ -55,7 +55,7 @@ Modo edición: `<ds-list-row edit="select|add|remove" selected>`.
 
 **Progreso**: `<ds-progress value="3" max="10" segments="10" label="Semana 3 de 10">` (sin `segments`, barra continua).
 
-**Iconos**: `<ds-icon name="search">` con 56 iconos en Lucide (por defecto), Material Symbols o Heroicons; cada proyecto elige con `data-icon-set`. Ver [docs/ICONS.md](docs/ICONS.md).
+**Iconos**: `<ds-icon name="search">` con 57 iconos en Lucide (por defecto), Material Symbols, Heroicons o la librería propia dibujada a mano (`hand`); cada proyecto elige con `data-icon-set`. Ver [docs/ICONS.md](docs/ICONS.md).
 
 **Valores en JS** (canvas, gráficos, apps nativas): `import { cssVar, values } from '@antonio-ds/tokens'`.
 

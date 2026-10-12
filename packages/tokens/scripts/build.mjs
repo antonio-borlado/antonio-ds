@@ -290,7 +290,7 @@ export declare function cssVar(path: TokenPath | (string & {})): string;
       var mode = el.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       return { brand: el.getAttribute('data-brand') || ${JSON.stringify(DEFAULT_BRAND)}, mode: mode };
     },
-    /** Icon library for the page or a subtree: 'lucide' | 'material' | 'heroicons'. Its set must be loaded. */
+    /** Icon library for the page or a subtree: 'lucide' | 'material' | 'heroicons' | 'hand'. Its set must be loaded. */
     setIconSet: function (name, target) {
       (target || root).setAttribute('data-icon-set', name);
     }

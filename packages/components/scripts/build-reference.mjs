@@ -56,7 +56,7 @@ import { Button, List, ListRow } from '@antonio-ds/react'; // mismo nombre que e
 \`\`\`
 
 **Tema, marca e iconos** (en \`<html>\` o cualquier contenedor): \`data-theme="light|dark"\` (sin él, sigue al sistema),
-\`data-brand="base"\`, \`data-icon-set="lucide|material|heroicons"\`. En JS: \`DS.setTheme({ mode: 'dark' })\`, \`DS.setIconSet('material')\`.
+\`data-brand="base"\`, \`data-icon-set="lucide|material|heroicons|hand"\`. En JS: \`DS.setTheme({ mode: 'dark' })\`, \`DS.setIconSet('material')\`.
 
 ## Componentes
 
@@ -124,7 +124,7 @@ También \`.ds-text-body-medium\` y \`.ds-text-small-medium\`. Variables: \`--ds
 
 \`<ds-icon name="…">\` con: ${ICONS.map((r) => `\`${r[0]}\``).join(', ')}.
 
-Librerías: \`lucide\` (por defecto, incluida), \`material\`, \`heroicons\` (cargar su script/import).
+Librerías: \`lucide\` (por defecto, incluida), \`material\`, \`heroicons\`, \`hand\` (dibujada a mano, propia) (cargar su script/import).
 `;
 
 writeFileSync(join(ROOT, 'dist/REFERENCE.md'), md);

@@ -6,12 +6,13 @@ import { defineConfig } from 'vite';
 export default defineConfig(({ mode }) => {
   const cdn = mode === 'cdn';
   const entry = cdn
-    ? { 'ds-components': 'src/index.ts', 'icons-heroicons': 'src/icons/generated/heroicons.ts', 'icons-material': 'src/icons/generated/material.ts' }
+    ? { 'ds-components': 'src/index.ts', 'icons-heroicons': 'src/icons/generated/heroicons.ts', 'icons-material': 'src/icons/generated/material.ts', 'icons-hand': 'src/icons/generated/hand.ts' }
     : {
         index: 'src/index.ts',
         'icons/lucide': 'src/icons/generated/lucide.ts',
         'icons/heroicons': 'src/icons/generated/heroicons.ts',
         'icons/material': 'src/icons/generated/material.ts',
+        'icons/hand': 'src/icons/generated/hand.ts',
       };
   return {
     build: {
