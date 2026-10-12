@@ -93,7 +93,7 @@ ${['color.bg.', 'color.content.', 'color.border.', 'color.focus.']
   .map((k) => `| \`${k}\` | \`${cssVar(k)}\` | ${light[k]} | ${dark[k]} |`)
   .join('\n')}
 
-- \`bg\`: fondos. \`canvas\` = página, \`surface\` = tarjetas/inputs, \`subtle\` = zonas resaltadas/hover, \`inverse\` = tooltips/toasts.
+- \`bg\`: fondos. \`canvas\` = página, \`surface\` = tarjetas/inputs, \`subtle\` = zonas resaltadas/hover.
 - \`content\`: texto e iconos. \`on-accent\` va sobre \`bg.accent\`, \`bg.danger.default\` y \`bg.success.default\`.
 
 ### Tipografía
