@@ -12,8 +12,8 @@ Figma (Tokens Studio) ──push──▶ tokens/tokens.json ──CI──▶ n
 | Paquete | Qué es |
 | --- | --- |
 | `@antonio-ds/tokens` | Variables CSS `--ds-*` por marca y tema, JS/TS, JSON y `ds-theme.js` (loader para CDN) |
-| `@antonio-ds/components` | Web Components en Lit: `<ds-button>`, `<ds-input>`, `<ds-card>`, `<ds-badge>`, `<ds-icon>`, `<ds-switch>`, `<ds-stepper>`, `<ds-select>`, `<ds-date-picker>`, `<ds-list>` (+ `ds-list-row`, `ds-list-header`, `ds-list-footer`) |
-| `@antonio-ds/react` | Wrappers React (`Button`, `Input`, `Card`, `Badge`, `Icon`, `Switch`, `Stepper`, `Select`, `DatePicker`, `List`, `ListRow`, `ListHeader`, `ListFooter`, `Theme`) |
+| `@antonio-ds/components` | Web Components en Lit: `<ds-button>`, `<ds-input>`, `<ds-card>`, `<ds-badge>`, `<ds-icon>`, `<ds-switch>`, `<ds-stepper>`, `<ds-select>`, `<ds-date-picker>`, `<ds-progress>`, `<ds-list>` (+ `ds-list-row`, `ds-list-header`, `ds-list-footer`) |
+| `@antonio-ds/react` | Wrappers React (`Button`, `Input`, `Card`, `Badge`, `Icon`, `Switch`, `Stepper`, `Select`, `DatePicker`, `Progress`, `List`, `ListRow`, `ListHeader`, `ListFooter`, `Theme`) |
 | `apps/docs` | Storybook con selector de marca, tema y viewport (se publica en Vercel) |
 
 ## Usar el DS en un producto
@@ -52,6 +52,8 @@ import { Button, Theme } from '@antonio-ds/react';
 
 Controles para filas: `<ds-stepper>`, `<ds-select>` (pop-up sobre un `<select>` nativo), `<ds-date-picker type="date|time|datetime">`.
 Modo edición: `<ds-list-row edit="select|add|remove" selected>`.
+
+**Progreso**: `<ds-progress value="3" max="10" segments="10" label="Semana 3 de 10">` (sin `segments`, barra continua).
 
 **Iconos**: `<ds-icon name="search">` con 56 iconos en Lucide (por defecto), Material Symbols o Heroicons; cada proyecto elige con `data-icon-set`. Ver [docs/ICONS.md](docs/ICONS.md).
 

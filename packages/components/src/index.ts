@@ -19,6 +19,7 @@ export { DsStepper } from './components/stepper.js';
 export { DsSelect } from './components/select.js';
 export { DsDatePicker } from './components/date-picker.js';
 export type { DatePickerType } from './components/date-picker.js';
+export { DsProgress } from './components/progress.js';
 export type { IconSize } from './components/icon.js';
 export { registerIconSet, getIconSet, DEFAULT_ICON_SET } from './icons/registry.js';
 export type { IconSetData } from './icons/registry.js';

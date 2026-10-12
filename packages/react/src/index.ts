@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
-import { DsBadge, DsButton, DsCard, DsIcon, DsInput, DsDatePicker, DsList, DsListFooter, DsListHeader, DsListRow, DsSelect, DsStepper, DsSwitch } from '@antonio-ds/components';
+import { DsBadge, DsButton, DsCard, DsIcon, DsInput, DsDatePicker, DsList, DsListFooter, DsListHeader, DsListRow, DsProgress, DsSelect, DsStepper, DsSwitch } from '@antonio-ds/components';
 
 export type { BadgeVariant, ButtonSize, ButtonVariant, IconName, IconSet, IconSize, ListHeaderType, ListType, DatePickerType } from '@antonio-ds/components';
 export { iconNames, iconSets, registerIconSet } from '@antonio-ds/components';
@@ -81,3 +81,5 @@ export const DatePicker = createComponent({
   react: React,
   events: { onChange: 'change' as EventName<Event> },
 });
+
+export const Progress = createComponent({ tagName: 'ds-progress', elementClass: DsProgress, react: React });
