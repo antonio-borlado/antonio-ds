@@ -11,7 +11,7 @@ const meta: Meta<Args> = {
   argTypes: {
     name: { control: 'select', options: [...iconNames] },
     size: { control: 'inline-radio', options: ['sm', 'md', 'lg', 'inherit'] },
-    set: { control: 'inline-radio', options: ['', 'lucide', 'material', 'heroicons'], description: 'Vacío = la del proyecto (barra superior)' },
+    set: { control: 'inline-radio', options: ['', 'lucide', 'material', 'heroicons', 'hand'], description: 'Vacío = la del proyecto (barra superior)' },
   },
   render: (a) => html`<ds-icon name=${a.name} size=${a.size} set=${a.set || undefined} label=${a.label}></ds-icon>`,
 };
@@ -42,7 +42,7 @@ export const Compare: StoryObj<Args> = {
   parameters: { controls: { disable: true } },
   render: () => html`
     <div style="display:grid;gap:16px">
-      ${['lucide', 'material', 'heroicons'].map(
+      ${['lucide', 'material', 'heroicons', 'hand'].map(
         (set) => html`<div data-icon-set=${set} style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
           <code style="width:96px;font-size:12px;color:var(--ds-color-content-secondary)">${set}</code>
           ${['home', 'search', 'bell', 'settings', 'user', 'heart', 'trash', 'download', 'warning', 'success'].map((n) => html`<ds-icon name=${n} size="lg"></ds-icon>`)}

@@ -5,6 +5,7 @@ import '@antonio-ds/tokens/css/global.css';
 import '@antonio-ds/components';
 import '@antonio-ds/components/icons/heroicons';
 import '@antonio-ds/components/icons/material';
+import '@antonio-ds/components/icons/hand';
 
 const preview: Preview = {
   globalTypes: {
@@ -33,6 +34,7 @@ const preview: Preview = {
           { value: 'lucide', title: 'Lucide' },
           { value: 'material', title: 'Material Symbols' },
           { value: 'heroicons', title: 'Heroicons' },
+          { value: 'hand', title: 'A mano' },
         ],
         dynamicTitle: true,
       },

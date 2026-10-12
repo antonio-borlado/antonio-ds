@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 
 const FILES = {
   'packages/tokens': ['dist/ds-theme.js', 'dist/css/all.css', 'dist/css/core.css', 'dist/css/global.css', 'dist/css/fonts.css'],
-  'packages/components': ['dist/cdn/ds-components.js', 'dist/cdn/icons-heroicons.js', 'dist/cdn/icons-material.js', 'dist/REFERENCE.md', 'dist/custom-elements.json'],
+  'packages/components': ['dist/cdn/ds-components.js', 'dist/cdn/icons-heroicons.js', 'dist/cdn/icons-material.js', 'dist/cdn/icons-hand.js', 'dist/REFERENCE.md', 'dist/custom-elements.json'],
 };
 
 let failed = false;

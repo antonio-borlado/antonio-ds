@@ -1,6 +1,6 @@
 # Iconos
 
-El DS tiene **56 iconos con nombre propio** (`close`, `search`, `warning`…) disponibles en tres librerías.
+El DS tiene **57 iconos con nombre propio** (`close`, `search`, `warning`…) disponibles en cuatro librerías.
 Los productos y los componentes usan siempre el nombre del DS, así que cambiar de librería nunca rompe una pantalla.
 
 | Librería | Valor | Estilo | Licencia |
@@ -8,6 +8,7 @@ Los productos y los componentes usan siempre el nombre del DS, así que cambiar 
 | Lucide (por defecto) | `lucide` | Línea 2px, redondeada | ISC |
 | Material Symbols | `material` | Outlined, relleno | Apache-2.0 |
 | Heroicons | `heroicons` | Outline 1.5px | MIT |
+| A mano | `hand` | Trazo dibujado a mano, relleno | Propia (MIT) |
 
 ## Usar un icono
 
@@ -46,7 +47,11 @@ import '@antonio-ds/components/icons/material';
 
 1. Añade una fila en `packages/components/scripts/icon-map.mjs` con el nombre del DS y su equivalente en cada librería
    (busca los nombres en lucide.dev, fonts.google.com/icons y heroicons.com).
-2. `npm run build` — falla si algún nombre no existe en alguna librería.
+2. Dibújalo en Figma para la librería `hand` y expórtalo como SVG a `packages/components/icons/hand/<nombre del DS>.svg`.
+3. `npm run build` — falla si algún nombre no existe en alguna librería.
+
+La librería `hand` se exporta tal cual desde Figma (24×24, formas rellenas, cualquier color): el build reduce la precisión
+a 0,1 px con SVGO y quita los colores para que el icono herede `currentColor`.
 
 ## Añadir otra librería
 
