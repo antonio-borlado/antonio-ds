@@ -1,5 +1,16 @@
 # @antonio-ds/react
 
+## 1.7.0
+
+### Minor Changes
+
+- 03b6dfa: Nuevo `<ds-progress>` (`Progress` en React): barra de progreso continua o dividida en `segments` (p. ej. semanas de un programa), con `role="progressbar"` y `label` accesible.
+
+### Patch Changes
+
+- Updated dependencies [03b6dfa]
+  - @antonio-ds/components@1.7.0
+
 ## 1.6.0
 
 ### Patch Changes

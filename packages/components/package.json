@@ -1,6 +1,6 @@
 {
   "name": "@antonio-ds/components",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Framework-agnostic Web Components (Lit) themed by @antonio-ds/tokens",
   "type": "module",
   "license": "MIT",
