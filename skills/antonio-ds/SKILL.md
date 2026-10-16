@@ -32,7 +32,7 @@ La referencia se genera con cada versión publicada: componentes con atributos, 
 4. **Tipografía.** Usa las clases `.ds-text-<rol>` (display, h1, h2, h3, lead, body, body-medium, small, small-medium, caption) o `global.css` para `h1`–`h3`. Solo dos pesos: regular y medium.
 5. **Tema y marca.** Nunca fuerces colores para el modo oscuro: usa `data-theme="light|dark"` (o nada, para seguir al sistema) y deja que los tokens cambien solos.
 6. **Iconos.** `<ds-icon name="…">` con los nombres del DS. La librería se elige por proyecto con `data-icon-set`; no mezcles otras librerías de iconos.
-7. **Accesibilidad.** Da `label` a los controles sin texto visible (`ds-switch`, `ds-stepper`, `ds-select`, iconos con significado). Mantén el contraste: texto `content.*` sobre `bg.*`.
+7. **Accesibilidad.** Da `label` a los controles sin texto visible (`ds-switch`, `ds-stepper`, `ds-select`, `ds-progress`, iconos con significado). Mantén el contraste: texto `content.*` sobre `bg.*`.
 8. **No uses otras librerías de UI** (Tailwind con colores propios, MUI, shadcn…) salvo que el usuario lo pida. Si usa Tailwind, mapea a las variables `--ds-*`.
 
 ## 4. Cuando falte algo en el DS

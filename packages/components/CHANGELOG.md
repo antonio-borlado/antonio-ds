@@ -1,5 +1,17 @@
 # @antonio-ds/components
 
+## 1.8.0
+
+### Minor Changes
+
+- a4e06d1: Nueva librería de iconos `hand`, dibujada a mano (Figma): `data-icon-set="hand"`, `import '@antonio-ds/components/icons/hand'` o `dist/cdn/icons-hand.js`. Los SVG exportados de Figma se optimizan en el build (1 MB → 66 KB) y heredan `currentColor`.
+
+## 1.7.0
+
+### Minor Changes
+
+- 03b6dfa: Nuevo `<ds-progress>` (`Progress` en React): barra de progreso continua o dividida en `segments` (p. ej. semanas de un programa), con `role="progressbar"` y `label` accesible.
+
 ## 1.6.0
 
 ### Minor Changes
