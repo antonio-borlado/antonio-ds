@@ -93,13 +93,13 @@ ${['color.bg.', 'color.content.', 'color.border.', 'color.focus.']
   .map((k) => `| \`${k}\` | \`${cssVar(k)}\` | ${light[k]} | ${dark[k]} |`)
   .join('\n')}
 
-- \`bg\`: fondos. \`canvas\` = página, \`surface\` = tarjetas/inputs, \`subtle\` = zonas resaltadas/hover, \`inverse\` = tooltips/toasts.
+- \`bg\`: fondos. \`canvas\` = página, \`surface\` = tarjetas/inputs, \`subtle\` = zonas resaltadas/hover.
 - \`content\`: texto e iconos. \`on-accent\` va sobre \`bg.accent\`, \`bg.danger.default\` y \`bg.success.default\`.
 
 ### Tipografía
 
 Familia \`var(--ds-font-family-body)\` (${light['font.family.body']}). Pesos: regular ${light['font.weight.regular']}, medium ${light['font.weight.medium']} (no hay otros).
-Escala ratio ${light['font.scale.ratio']} desde ${light['font.scale.base']}px. Clases listas para usar (cambian de móvil a desktop desde 1024px):
+Escala (\`font.size.<px>\`): ${Object.keys(light).filter((k) => k.startsWith('font.size.')).map((k) => light[k]).join(', ')}. Clases listas para usar (cambian de móvil a desktop desde 1024px):
 
 | Clase | Móvil | Desktop |
 | --- | --- | --- |

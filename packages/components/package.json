@@ -30,13 +30,14 @@
   },
   "sideEffects": true,
   "scripts": {
-    "build": "node scripts/build-icons.mjs && vite build && vite build --mode cdn && tsc -p tsconfig.json --emitDeclarationOnly && custom-elements-manifest analyze --litelement --globs \"src/components/*.ts\" --outdir dist --quiet && node scripts/build-reference.mjs"
+    "build": "node scripts/build-icons.mjs && vite build && vite build --mode cdn && tsc -p tsconfig.json --emitDeclarationOnly && custom-elements-manifest analyze --litelement --globs \"src/components/*.ts\" --outdir dist --quiet && node scripts/build-reference.mjs",
+    "export:svg": "node scripts/export-svgs.mjs"
   },
   "dependencies": {
     "lit": "^3.3.0"
   },
   "peerDependencies": {
-    "@antonio-ds/tokens": "^1.0.0"
+    "@antonio-ds/tokens": "^1.0.0 || ^2.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.11.0",

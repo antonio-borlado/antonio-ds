@@ -125,16 +125,6 @@ async function build() {
   const baseCtx = [CORE, `brands/${DEFAULT_BRAND}/brand`, `brands/${DEFAULT_BRAND}/${modesOf(DEFAULT_BRAND)[0]}`, MOBILE];
   let core = '/* @antonio-ds/tokens — generated, do not edit. Source: tokens/tokens.json */\n';
   core += await cssBlock(baseCtx, [CORE], ':root');
-  // Renamed (1.2) and removed component tokens (1.3) keep their old CSS names as aliases until 2.0.
-  // Declared on every themed scope so var() re-resolves inside nested brands/themes.
-  const renamed = JSON.parse(readFileSync(join(ROOT, 'scripts/renamed-tokens.json'), 'utf8'));
-  const removedComponents = JSON.parse(readFileSync(join(ROOT, 'scripts/removed-component-tokens.json'), 'utf8'));
-  const cssName = (path) => `--${[PREFIX, ...path.split('.')].join('-')}`;
-  const aliases = [
-    ...Object.entries(renamed).map(([from, to]) => `  ${cssName(from)}: var(${cssName(to)});`),
-    ...Object.entries(removedComponents).map(([name, value]) => `  ${name}: ${value};`),
-  ];
-  core += `/* Deprecated names, removed in 2.0 */\n:root,\n[data-brand],\n[data-theme] {\n${aliases.join('\n')}\n}\n`;
   core += await cssBlock(baseCtx, [MOBILE], ':root');
   core += media(`(min-width: ${DESKTOP_MIN_WIDTH})`, await cssBlock([...baseCtx.slice(0, 3), DESKTOP], [DESKTOP], ':root'));
   writeFileSync(join(DIST, 'css/core.css'), core);
